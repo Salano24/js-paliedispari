@@ -1,25 +1,34 @@
-//Chiedere all’utente di inserire una parola 
-
-//prompt
-//let
-/* chiedo all'utente di inserire una parola */
-let userWord = prompt('Inserisci una parola')
-
-//Creare una funzione per capire se la parola inserita è palindroma
-
-//function
-//if else 
-//charAt()
-/* trasformo tutte le lettere della parola in minuscole */
-userWord = userWord.toLowerCase()
-console.log(userWord);
-
-/* verifico che la parola sia composta da almeno 2 lettere */
-if (userWord.length < 2) {
-    alert('La parola deve contenere almeno 2 caratteri')
+/* chiediamo all'utente di inserire una parola */
+let userWord = prompt("Inserisci una parola")
+/* verifichiamo che il valore inserito non sia un numero */
+if(!isNaN(userWord)){
+    alert("Please refresh and insert a word")
+} /* in caso contrario usiamo la funzione per verificare che la parola sia palindroma */
+else {
+    palindroma()
 }
+/* scriviamo la funzione di verifica */
+function palindroma(){
 
-/* dichiaro due variabili che corrispondono alla prima lettera e all'ultima lettera della parola */
-let primaLettera = userWord.charAt(0)
-let ultimaLettera = userWord.charAt(userWord.length-1)
-console.log(primaLettera, ultimaLettera);
+    /* stabiliamo due variabili, una per contare il numero di caratteri, l'altra per verificare carattere per carattere */
+    let contatore = -1
+    let verificato = 0
+    
+    /* scrittura ciclo for per verificare tutti i caratteri */
+    for(let i = userWord.length-1; i >= 0; i--){
+        
+        /* ad ogni giro implementare contatore di un carattere */
+        contatore++
+        /* se i caratteri corrispondono implementare 'verificato', senò stampare un alert */
+        if(userWord[i] == userWord[contatore]){
+            verificato ++ 
+        } else {
+            alert("La tua parola non è palindroma")
+            break
+        }
+        /* se tutti i caratteri sono stati verificati stampare un alert */
+        if(verificato == userWord.length){
+            alert("La tua parola è palindroma")
+        }
+    }
+}
